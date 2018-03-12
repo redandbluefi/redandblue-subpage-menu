@@ -1,0 +1,16 @@
+{
+  "name": "redandbluefi/redandblue-subpage-menu",
+  "type": "wordpress-plugin",
+  "description": "redandblue subpage menu",
+  "homepage": "https://github.com/redandbluefi/redandblue-subpage-menu",
+  "keywords": ["wordpress", "plugin"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "authors": [
+    {
+      "name": "Eemeli Makkonen",
+      "email": "eemeli@redandblue.fi",
+      "homepage": "https://www.redandblue.fi"
+    }
+  ]
+}
