@@ -2,17 +2,17 @@
 
 @TODO Better name?
 
-Use case:
+## Use case:
 - Building a hierarchical (sidebar) menu for pages with parents / child.
-- Lists child nodes under parent node in separate <ul> list.
+- Lists child nodes under parent node in separate list.
 
 
-How to use:
+## How to use:
 
 - Call the function in your page.php / single.php
 - Add custom post type name as an argument if you want to use the menu in a custom post type
 
-Example:
+## Example:
 ```php
 
 <?php $sub_nav = get_subpage_menu('custom_post_type'); ?>
