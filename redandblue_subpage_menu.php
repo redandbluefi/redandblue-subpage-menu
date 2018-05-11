@@ -23,12 +23,11 @@ function get_subpage_menu($post_type, $nav_title = NULL) {
         return null;
       } else {
         $second_level_ancestor = end($ancestors);
+        $nav_title_visible = false;
 
         if($nav_title == TRUE) {
           $nav_title_visible = get_the_title($second_level_ancestor);
         }
-
-        $nav_title_visible = false;
 
         $opts = [
           'echo' => false,
