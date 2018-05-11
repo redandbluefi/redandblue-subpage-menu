@@ -13,7 +13,7 @@
  * Domain Path: /languages
 */
 
-function get_subpage_menu($post_type) {
+function get_subpage_menu($post_type, $nav_title = NULL) {
   if (is_page() || get_post_type() == $post_type) {
     global $post;
 
@@ -24,10 +24,16 @@ function get_subpage_menu($post_type) {
       } else {
         $second_level_ancestor = end($ancestors);
 
+        if($nav_title == TRUE) {
+          $nav_title_visible = get_the_title($second_level_ancestor);
+        }
+
+        $nav_title_visible = false;
+
         $opts = [
           'echo' => false,
           'child_of' => $second_level_ancestor,
-          'title_li' => NULL,
+          'title_li' => $nav_title_visible,
           'post_type' => get_post_type()
         ];
         return wp_list_pages($opts);
