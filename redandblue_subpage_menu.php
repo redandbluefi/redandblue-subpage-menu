@@ -17,28 +17,28 @@ function get_subpage_menu($post_type, $nav_title = NULL) {
   if (is_page() || get_post_type() == $post_type) {
     global $post;
 
-      $ancestors = get_ancestors($post->ID, get_post_type());
-
-      if (count($ancestors) < 1) {
-        return null;
-      } else {
-        $second_level_ancestor = end($ancestors);
-        $nav_title_visible = false;
-
-        if($nav_title == TRUE) {
-          $nav_title_visible = get_the_title($second_level_ancestor);
-        }
-
-        $opts = [
-          'echo' => false,
-          'child_of' => $second_level_ancestor,
-          'title_li' => $nav_title_visible,
-          'post_type' => get_post_type()
-        ];
-        return wp_list_pages($opts);
+      if ($post->post_parent) {
+        $ancestors = get_ancestors($post->ID, get_post_type());
+        $parent = $ancestors[count($ancestors) - 1];
+      }
+      else {
+        $parent = $post->ID;
       }
 
-    return null;
+
+      $nav_title_visible = false;
+
+      if($nav_title == TRUE) {
+        $nav_title_visible = get_the_title($parent);
+      }
+
+      $opts = [
+        'echo' => false,
+        'child_of' => $parent,
+        'title_li' => '<span>' . $nav_title_visible .'</span>',
+        'post_type' => get_post_type()
+      ];
+      return wp_list_pages($opts);
   }
 }
 ?>
