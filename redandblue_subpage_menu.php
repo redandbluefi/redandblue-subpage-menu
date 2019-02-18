@@ -13,7 +13,7 @@
  * Domain Path: /languages
 */
 
-function get_subpage_menu($post_type, $nav_title = NULL) {
+function get_subpage_menu($post_type, $nav_title = NULL, $nav_title_link = NULL) {
   if (is_page() || get_post_type() == $post_type) {
     global $post;
 
@@ -27,9 +27,14 @@ function get_subpage_menu($post_type, $nav_title = NULL) {
 
 
       $nav_title_visible = false;
-
       if($nav_title == TRUE) {
         $nav_title_visible = get_the_title($parent);
+      }
+
+      $nav_title_link_active = false;
+      if($nav_title_link == TRUE) {
+        $nav_title_link_active = get_permalink($parent);
+        $nav_title_visible = '<a href="' . $nav_title_link_active . '" title="menu-link-parent">' . get_the_title($parent) . '</a>';
       }
 
       $opts = [
