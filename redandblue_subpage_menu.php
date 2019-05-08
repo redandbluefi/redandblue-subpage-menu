@@ -40,7 +40,7 @@ function get_subpage_menu($post_type, $nav_title = NULL, $nav_title_link = NULL)
       $opts = [
         'echo' => false,
         'child_of' => $parent,
-        'title_li' => '<span>' . $nav_title_visible .'</span>',
+        'title_li' => is_null($nav_title) ? null : '<span>' . $nav_title_visible .'</span>',
         'post_type' => get_post_type()
       ];
       return wp_list_pages($opts);
