@@ -14,6 +14,8 @@
 */
 
 function get_subpage_menu($post_type, $nav_title = NULL, $nav_title_link = NULL) {
+
+  
   if (is_page() || get_post_type() == $post_type) {
     global $post;
 
@@ -27,7 +29,7 @@ function get_subpage_menu($post_type, $nav_title = NULL, $nav_title_link = NULL)
 
 
       $nav_title_visible = false;
-      if($nav_title == TRUE) {
+      if($nav_title == TRUE) {  
         $nav_title_visible = get_the_title($parent);
       }
 
@@ -40,7 +42,7 @@ function get_subpage_menu($post_type, $nav_title = NULL, $nav_title_link = NULL)
       $opts = [
         'echo' => false,
         'child_of' => $parent,
-        'title_li' => is_null($nav_title) ? null : '<span>' . $nav_title_visible .'</span>',
+        'title_li' => is_null($nav_title) ? null : '<span>' . apply_filters( 'get_subpage_nav_title', $nav_title_visible) .'</span>',
         'post_type' => get_post_type()
       ];
       return wp_list_pages($opts);
